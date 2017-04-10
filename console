@@ -3,6 +3,6 @@
 
 include_once __DIR__ . '/vendor/autoload.php';
 
-$poloniex = provider('poloniex');
+$poloniex = \provider('poloniex');
 
-var_dump($poloniex->returnTicker());
+var_dump($poloniex->getBalances());
