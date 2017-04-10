@@ -4,7 +4,9 @@ namespace Deimos\App;
 
 use Deimos\Builder\Builder;
 use Deimos\Config\Config;
+use Deimos\Database\Database;
 use Deimos\Helper\Helper;
+use Deimos\ORM\ORM;
 
 class App extends Builder
 {
@@ -21,7 +23,7 @@ class App extends Builder
      */
     public function __construct($root)
     {
-        $this->root = rtrim($root, '\\/') . '/';
+        $this->root = \rtrim($root, '\\/') . '/';
     }
 
     /**
@@ -50,9 +52,38 @@ class App extends Builder
     {
         return $this->once(function ()
         {
-            $config = path('config');
+            $config = \path('config');
 
-            return new Config($this->helper(), $config);
+            return new Config(\helper(), $config);
+        }, __METHOD__);
+    }
+
+    /**
+     * @return Database
+     */
+    public function database()
+    {
+        return $this->once(function ()
+        {
+            return new Database(\config('db'));
+        }, __METHOD__);
+    }
+
+    /**
+     * @return ORM
+     */
+    public function orm()
+    {
+        return $this->once(function ()
+        {
+
+            $relationships = \config('relationships')->asArray();
+
+            $orm = new ORM(\helper(), \database());
+            $orm->setConfig($relationships);
+
+            return $orm;
+
         }, __METHOD__);
     }
 

@@ -5,7 +5,7 @@
  */
 function root()
 {
-    return app()->root();
+    return \app()->root();
 }
 
 /**
@@ -15,5 +15,5 @@ function root()
  */
 function path($dir)
 {
-    return root() . $dir;
+    return \root() . $dir;
 }

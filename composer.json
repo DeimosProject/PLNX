@@ -1,6 +1,7 @@
 {
   "require": {
-    "deimos/orm": "~3.0"
+    "deimos/orm": "~3.0",
+    "monolog/monolog": "^1.22"
   },
   "autoload": {
     "psr-4": {
