@@ -244,9 +244,7 @@ class Poloniex
      */
     public function getVolume()
     {
-        return $this->retrieve([
-            'command' => 'return24hVolume'
-        ]);
+        return $this->retrieve(['command' => 'return24hVolume']);
     }
 
     /**
@@ -276,13 +274,21 @@ class Poloniex
     }
 
     /**
+     * @return array
+     */
+    public function getCompleteBalances()
+    {
+        return $this->query(['command' => 'returnCompleteBalances']);
+    }
+
+    /**
      * @param $coin
      *
      * @return double
      */
     public function getBtcBalance($coin)
     {
-        $balances = $this->query(['command' => 'returnCompleteBalances']);
+        $balances = $this->getCompleteBalances();
 
         foreach ($balances as $key => $balance)
         {
@@ -302,9 +308,8 @@ class Poloniex
      */
     public function getTotalBtcBalance(array $exclude = [])
     {
-        $total = 0.;
-
-        $balances = $this->query(['command' => 'returnCompleteBalances']);
+        $balances = $this->getCompleteBalances();
+        $total    = 0.;
 
         foreach ($balances as $key => $balance)
         {
@@ -326,14 +331,12 @@ class Poloniex
      */
     public function getBalance($coin)
     {
-        $coin = strtoupper($coin);
+        $balances = $this->getBalances();
+        $coin     = strtoupper($coin);
 
-        foreach ($this->getBalances() as $_coin => $balance)
+        if (isset($balances[$coin]))
         {
-            if ($coin === $_coin)
-            {
-                return $balance;
-            }
+            return $balances[$coin];
         }
 
         return .0;
