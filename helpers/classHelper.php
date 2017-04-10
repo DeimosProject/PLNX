@@ -5,7 +5,13 @@
  */
 function app()
 {
-    global $app;
+    static $app;
+
+    if (!$app)
+    {
+        $root = dirname(__DIR__);
+        $app  = new \Deimos\App\App($root);
+    }
 
     return $app;
 }
@@ -29,7 +35,7 @@ function config($path)
 }
 
 /**
- * @param string $className
+ * @param string $modelName
  *
  * @return \Deimos\ORM\Queries\Query
  */

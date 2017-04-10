@@ -2,7 +2,8 @@
   "require": {
     "deimos/orm": "~3.0",
     "monolog/monolog": "^1.22",
-    "php-ai/php-ml": "^0.4.1"
+    "php-ai/php-ml": "^0.4.1",
+    "curl/curl": "^1.6"
   },
   "autoload": {
     "psr-4": {

@@ -7,6 +7,7 @@ use Deimos\Config\Config;
 use Deimos\Database\Database;
 use Deimos\Helper\Helper;
 use Deimos\ORM\ORM;
+use Deimos\ORM\StaticORM;
 
 class App extends Builder
 {
@@ -76,11 +77,12 @@ class App extends Builder
     {
         return $this->once(function ()
         {
-
             $relationships = \config('relationships')->asArray();
 
             $orm = new ORM(\helper(), \database());
             $orm->setConfig($relationships);
+
+            StaticORM::setORM($orm);
 
             return $orm;
 

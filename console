@@ -3,4 +3,3 @@
 
 include_once __DIR__ . '/vendor/autoload.php';
 
-$app = new \Deimos\App\App(__DIR__);
