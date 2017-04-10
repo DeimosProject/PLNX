@@ -5,4 +5,4 @@ include_once __DIR__ . '/vendor/autoload.php';
 
 $poloniex = \provider('poloniex');
 
-var_dump($poloniex->getBalances());
+var_dump($poloniex->getBalance('BTC'));

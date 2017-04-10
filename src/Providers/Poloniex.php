@@ -280,7 +280,7 @@ class Poloniex
      *
      * @return double
      */
-    public function get_btc_balance($coin)
+    public function getBtcBalance($coin)
     {
         $balances = $this->query(['command' => 'returnCompleteBalances']);
 
@@ -326,6 +326,8 @@ class Poloniex
      */
     public function getBalance($coin)
     {
+        $coin = strtoupper($coin);
+
         foreach ($this->getBalances() as $_coin => $balance)
         {
             if ($coin === $_coin)
