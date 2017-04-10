@@ -1,0 +1,14 @@
+{
+  "require": {
+    "deimos/config": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Deimos\\": "src/"
+    },
+    "files": [
+      "helpers/classHelper.php",
+      "helpers/pathHelper.php"
+    ]
+  }
+}
