@@ -1,6 +1,6 @@
 {
   "require": {
-    "deimos/config": "~2.0"
+    "deimos/orm": "~3.0"
   },
   "autoload": {
     "psr-4": {
