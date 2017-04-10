@@ -1,5 +1,7 @@
 # PLNX
 
+https://ezhrd.wordpress.com/
+
 https://github.com/platedodev/Poloniex-API-for-PHP/blob/master/Poloniex.php
 
 https://github.com/htunlogic/laravel-poloniex
