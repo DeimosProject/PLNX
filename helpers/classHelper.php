@@ -51,3 +51,17 @@ function database()
 {
     return \app()->database();
 }
+
+/**
+ * @param string $name
+ *
+ * @return Deimos\Providers\Poloniex
+ * @throws \Deimos\Helper\Exceptions\ExceptionEmpty
+ */
+function provider($name)
+{
+    $slice    = \config('providers')->getSlice($name);
+    $provider = $slice->getRequired('provider');
+
+    return new $provider($slice);
+}
